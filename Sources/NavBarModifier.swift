@@ -17,11 +17,11 @@ struct NavBarModifier<SelectionType>: ViewModifier where SelectionType: Hashable
     @MainActor func body(content: Content) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             if !style.placedInToolbar {
-                NavBarWrapperView(selection: $selection)
                 content
+                NavBarWrapperView(selection: $selection)
             } else {
                 content.toolbar(content: {
-                    ToolbarItem(placement: .principal) {
+                    ToolbarItem(placement: .bottomBar) {
                         NavBarWrapperView(selection: $selection)
                     }
                 })
