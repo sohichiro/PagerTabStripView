@@ -17,8 +17,8 @@ struct NavBarModifier: ViewModifier {
     func body(content: Content) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             if !style.placedInToolbar {
-                NavBarWrapperView(selection: $selection)
                 content
+                NavBarWrapperView(selection: $selection)
             } else {
                 content.toolbar(content: {
                     ToolbarItem(placement: .principal) {
@@ -46,13 +46,13 @@ struct NavBarWrapperView: View {
         case .segmentedControl:
             SegmentedNavBarView(selection: $selection)
         case .barButton:
-            FixedSizeNavBarView(selection: $selection) { EmptyView() }
             IndicatorBarView { Rectangle() }
+            FixedSizeNavBarView(selection: $selection) { EmptyView() }
         case .scrollableBarButton:
             ScrollableNavBarView(selection: $selection)
         case .custom(_, _, _, let indicator, let background):
-            FixedSizeNavBarView(selection: $selection) { background() }
             IndicatorBarView { indicator() }
+            FixedSizeNavBarView(selection: $selection) { background() }
         }
     }
 
