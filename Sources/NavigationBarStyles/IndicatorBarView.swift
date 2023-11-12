@@ -22,6 +22,7 @@ internal struct IndicatorBarView<Indicator: View>: View {
 
                 indicator
                     .foregroundColor(style.indicatorBarColor)
+                    .background(Color.clear)
                     .animation(.default)
                     .frame(width: navBarItemWidth)
                     .position(x: x, y: 0)
