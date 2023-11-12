@@ -51,7 +51,7 @@ struct NavBarWrapperView: View {
         case .scrollableBarButton:
             ScrollableNavBarView(selection: $selection)
         case .custom(_, _, _, let indicator, let background):
-            IndicatorBarView { indicator() }
+            IndicatorBarView { indicator() }.background(style.backgroundColor)
             FixedSizeNavBarView(selection: $selection) { background() }
         }
     }
