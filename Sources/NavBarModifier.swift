@@ -46,8 +46,8 @@ struct NavBarWrapperView: View {
         case .segmentedControl:
             SegmentedNavBarView(selection: $selection)
         case .barButton:
-            IndicatorBarView { Rectangle() }
-            FixedSizeNavBarView(selection: $selection) { Rectangle().foregroundColor(Color.init(red: 51 / 255, green: 51 / 255, blue: 51 / 255).opacity(186 / 255)) }
+            IndicatorBarView { Rectangle() }.background(style.backgroundColor)
+            FixedSizeNavBarView(selection: $selection) { EmptyView() }
         case .scrollableBarButton:
             ScrollableNavBarView(selection: $selection)
         case .custom(_, _, _, let indicator, let background):

@@ -36,7 +36,7 @@ public enum PagerStyle {
     case bar(indicatorBarHeight: CGFloat = 2, indicatorBarColor: Color = .blue, tabItemSpacing: CGFloat = 0, placedInToolbar: Bool = false)
     /// The height of the indicator bar
     /// tabItemSpacing: The space between navigation bar tab items.
-    case barButton(indicatorBarHeight: CGFloat = 2, indicatorBarColor: Color = .blue,
+    case barButton(backgroundColor: Color = .white, indicatorBarHeight: CGFloat = 2, indicatorBarColor: Color = .blue,
                    tabItemSpacing: CGFloat = 0, tabItemHeight: CGFloat = 60,
                    placedInToolbar: Bool = false)
 
@@ -50,7 +50,7 @@ public enum PagerStyle {
         switch self {
         case .bar(_, _, let spacing, _):
             return spacing
-        case .barButton(_, _, let spacing, _, _):
+        case .barButton(_, _, _, let spacing, _, _):
             return spacing
         case .scrollableBarButton(_, _, _, let spacing, _, _):
             return spacing
@@ -65,7 +65,7 @@ public enum PagerStyle {
         switch self {
         case .bar(_, let color, _, _):
             return color
-        case .barButton(_, let color, _, _, _):
+        case .barButton(_, _, let color, _, _, _):
             return color
         case .scrollableBarButton(_, let color, _, _, _, _):
             return color
@@ -81,7 +81,7 @@ public enum PagerStyle {
         switch self {
         case .bar(let height, _, _, _):
             return height
-        case .barButton(let height, _, _, _, _):
+        case .barButton(_, let height, _, _, _, _):
             return height
         case .scrollableBarButton(let height, _, _, _, _, _):
             return height
@@ -92,7 +92,7 @@ public enum PagerStyle {
 
     internal var tabItemHeight: CGFloat {
         switch self {
-        case .barButton(_, _, _, let height, _):
+        case .barButton(_, _, _, _, let height, _):
             return height
         case .scrollableBarButton(_, _, _, _, let height, _):
             return height
@@ -106,6 +106,8 @@ public enum PagerStyle {
     internal var backgroundColor: Color {
         switch self {
         case .segmentedControl(let backgroundColor, _, _):
+            return backgroundColor
+        case .barButton(let backgroundColor, _, _, _, _, _):
             return backgroundColor
         default:
             return .white
@@ -129,7 +131,7 @@ public enum PagerStyle {
             return placedInToolbar
         case .bar( _, _, _, let placedInToolbar):
             return placedInToolbar
-        case .barButton( _, _, _, _, let placedInToolbar):
+        case .barButton( _, _, _, _, _, let placedInToolbar):
             return placedInToolbar
         case .scrollableBarButton( _, _, _, _, _, let placedInToolbar):
             return placedInToolbar
