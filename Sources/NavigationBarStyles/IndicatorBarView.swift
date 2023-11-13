@@ -14,8 +14,6 @@ internal struct IndicatorBarView<Indicator: View>: View {
     @ViewBuilder var indicator: Indicator
 
     var body: some View {
-        ZStack {
-            Color.init(red: 51 / 255, green: 51 / 255, blue: 51 / 255).opacity(186 / 255)
             HStack {
                 let totalItemWidth = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
                 let navBarItemWidth = totalItemWidth / CGFloat(dataStore.itemsCount)
@@ -31,7 +29,6 @@ internal struct IndicatorBarView<Indicator: View>: View {
                 }
             }
             .frame(height: style.indicatorBarHeight)
-        }
     }
 
     @Environment(\.pagerStyle) var style: PagerStyle

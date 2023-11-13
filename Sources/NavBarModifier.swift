@@ -18,7 +18,7 @@ struct NavBarModifier: ViewModifier {
         VStack(alignment: .leading, spacing: 0) {
             if !style.placedInToolbar {
                 content
-                NavBarWrapperView(selection: $selection)
+                NavBarWrapperView(selection: $selection).background(Color.init(red: 51 / 255, green: 51 / 255, blue: 51 / 255).opacity(186 / 255))
             } else {
                 content.toolbar(content: {
                     ToolbarItem(placement: .principal) {
