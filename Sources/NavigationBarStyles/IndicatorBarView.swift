@@ -14,21 +14,24 @@ internal struct IndicatorBarView<Indicator: View>: View {
     @ViewBuilder var indicator: Indicator
 
     var body: some View {
-        HStack {
-            let totalItemWidth = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
-            let navBarItemWidth = totalItemWidth / CGFloat(dataStore.itemsCount)
-            if navBarItemWidth > 0, navBarItemWidth <= settings.width {
-                let x = -settings.contentOffset / CGFloat(dataStore.itemsCount) + navBarItemWidth / 2
+        ZStack {
+            Color.init(red: 51 / 255, green: 51 / 255, blue: 51 / 255).opacity(186 / 255)
+            HStack {
+                let totalItemWidth = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
+                let navBarItemWidth = totalItemWidth / CGFloat(dataStore.itemsCount)
+                if navBarItemWidth > 0, navBarItemWidth <= settings.width {
+                    let x = -settings.contentOffset / CGFloat(dataStore.itemsCount) + navBarItemWidth / 2
 
-                indicator
-                    .foregroundColor(style.indicatorBarColor)
-                    .background(Color.init(red: 51 / 255, green: 51 / 255, blue: 51 / 255).opacity(186 / 255))
-                    .animation(.default)
-                    .frame(width: navBarItemWidth)
-                    .position(x: x, y: 0)
+                    indicator
+                        .foregroundColor(style.indicatorBarColor)
+                        .background(Color.init(red: 51 / 255, green: 51 / 255, blue: 51 / 255).opacity(186 / 255))
+                        .animation(.default)
+                        .frame(width: navBarItemWidth)
+                        .position(x: x, y: 0)
+                }
             }
+            .frame(height: style.indicatorBarHeight)
         }
-        .frame(height: style.indicatorBarHeight)
     }
 
     @Environment(\.pagerStyle) var style: PagerStyle
